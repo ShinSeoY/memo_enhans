@@ -1,0 +1,49 @@
+
+< 브라우저 데이터 수집 시 사용되는 모듈 >
+Puppeteer 
+Playwright
+
+
+< /internal >
+- 공통 내부 api
+- /application 안에 있는거랑 중복됨
+- /collectify-client
+- /synergy-client
+
+
+
+< /application >
+- 메인으로 볼 프로젝트
+- 프리렌서분이 작업한거 디비 넣는 처리 또는 api 작성
+- /agent-processor : 브라우저 컨트롤 Playwright
+- /agent : 브라우저 컨트롤 Playwright
+- /api
+- /coupon-collector : cj, png수집
+- /data-processor : 마이그레이션용 아직 사용x
+- /external-access-writer-api : 마이그레이션용 아직 사용x
+- /data-transfer : cj, png수집
+- /synergy-agent-processor : aiap
+- /target-url-collector : cj, png수집
+- /data-processor or parser-api : 로우데이터 조작
+
+
+< 주요 프로젝트 >
+… At : 커머스 상품 판매 자동화
+커머스 os
+Aiap: llm 사용 서비스
+
+
+삼성관련된 부분 (현님)
+에이전트팜
+aiap(은지님)
+
+
+< 메시지 큐 > 
+- confluent (kafka)
+- aws (sqs)
+
+
+< 에이전트팜 >
+- 파이프라인 자동화 + LAM(large action model) 기반 서비스
+- aiap에서 은지님이 보여줬던 부분 (특정 상품 검색시 최저가 검색)
+- 시리즈 b 마무리에 가장 큰 부분

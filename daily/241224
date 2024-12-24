@@ -1,0 +1,46 @@
+https://www.notion.so/enhans/External-Writer-14202490cbe08087bf4cee9b555814cc
+해당 노션 관련된 api 만들기 1/31일까지
+
+
+Sqs / -> Tsv파일로 변경 -> s3에 업로드 (url) -> /  sql
+
+Sqs에 데이터 넣고(프로듀싱)
+컨슘해올 때 버퍼에 데이터 몇개 넣어놓고 다 차면 또는 시간이 되면 그때 모아서 insert 시켜야함
+컨슘해온 데이터를 버퍼에 넣어놓을 때 전처리 필요 (전처리 : 컨슘해온 데이터를 tsv파일로 옮기고 그걸 s3로 업로드)
+업로드 후 리턴된 url을 S3TSVToRedshiftWriter안에 flushToDatabase() 메소드에 정의된 
+COPY ${getTableName()} (${getColumns().joinToString(", ")})
+FROM '$s3Path'
+에서 '$s3Path' 부분에 넣기
+
+
+
+< 프로젝트 참고 >
+S3-parser -> External-write-api
+Redshift-consumer -> External-write-consumer
+
+< 대략 메모 >
+Csv tsv 로 바꿔서 벌크 인서트
+
+insert시킬때는 domain말고 dto 만들어서
+domain에는 redshift 쿼리 넣을때만 사용
+
+domain이 여기저기서쓰지ㅣ 않게 하기위해
+application에서만 도메인 호출 가능 
+어플에서는 인터널 호출가능
+
+컨슈머쪽을 추상화하는데 초점
+
+jpa가 아닌 네이티브쿼리로 인서트
+Redshift-consumer 참고
+
+테이블이 없으면 그냥 throw
+
+
+< done > 
+- sqs 에 데이터 넣는 api 완성
+
+< todo >
+- External-write-consumer 프로젝트에 컨슘하는 부분 완성하기
+: 기존 Redshift-consumer에는 버퍼를 넣는 부분이 없는거 같음
+: 버퍼는 코루틴의 Channel 사용하기 - s3Parser 프로젝트의 S3ParserApplication.kt 참고
+: 아닌가 S3TSVToRedshiftWriter에 버퍼가 있긴함 어떤 역할인지 파악 필요 - private val buffer = mutableListOf<T>()

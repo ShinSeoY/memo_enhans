@@ -1,0 +1,6 @@
+< 배포방법 >
+머지 ->  code탭 -> 오른쪽에 Releases 
+-> [Draft a new release] 버튼 클릭
+-> [choose a tag] 태그 생성 draft(tag명 각 배포하고자하는 어플리케이션명 에다가 버전 1씩 올리기)
+-> [generate relaese notes] 버튼 클릭해서 write 에 값 자동으로 채우기 
+-> actions 탭에 초록색 동그라미 확인 

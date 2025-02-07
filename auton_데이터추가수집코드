@@ -1,0 +1,29 @@
+    private fun flushToDatabase() {
+        try {
+            items.forEach {
+                val partnerName = getPartnerNameValue(it)
+                val mallProductNo = getPrimaryKeyValue(it)
+                val sql = """
+                    UPDATE auton_poc_v1 set partner_name = '${partnerName}'
+                    where mall_product_no = ${mallProductNo}
+                """
+                logger.info("Start writing to MySql: $sql")
+                jdbcTemplate.execute(sql)
+            }
+
+        } catch (e: SQLException) {
+            logger.error(e.toString())
+        }
+    }
+
+    private fun getPartnerNameValue(item: T): Any? {
+        val field = item!!::class.members.find { it.name == "partnerName" }
+        field?.isAccessible = true
+        return field?.call(item)
+    }
+
+    private fun getPrimaryKeyValue(item: T): Any? {
+        val field = item!!::class.members.find { it.name == "mallProductNo" }
+        field?.isAccessible = true
+        return field?.call(item)
+    }

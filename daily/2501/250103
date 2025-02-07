@@ -1,0 +1,58 @@
+린트 적용
+ ./gradlew ktlintFormat
+
+
+< 데이터 수집 방법 >
+1. 브라우저 
+	- 크롬익스텐션 
+		- 이게 베스트 근데 브라우저에서 이벤트 발생시(팝업같은거) 컨트롤할 수 없음(브라우저 내렸다가 다시 띄우는데 pendding이 결림)
+		- 메세지 받아 처리 
+	- cdp (Chrome DevTools Protocol 
+        - 외부에서 브라우저 컨트롤가능 
+        - Playwright & Puppeteer
+		- 컨트롤 세세하게 가능 
+		- 클라우드플레어에서 봇으로 인식할수있음 그래서 막힘 ㅜㅜ
+2. Api call (내부적 api 찾아서) -> 보통 막음 그래서 우회필요 안되면 브라우저 띄우기
+
+3. Curl 로 네이버같은 사이트 요청해서 가지고옴
+
+
+< 우리 프로젝트 >
+/Agent 
+    - 브라우저 띄우는 용도
+    - 젤 먼저 띄워야함 
+	- 프로필에 크롬익스텐션 정보 들어감 (api 폴링방식 사용해서 프로필 정보가져옴) 
+	- 크롬익스텐션으로 브라우저 띄움, (만약 크롬익스텐션만 쓴다고 하면 Agent processer는 안띄워도댐)
+	- 헬스체크
+/Agent processer 
+    - 데이터수집은 여기서 
+    - /agent가 브라우저 10개 띄우면 띄운 브라우저에 붙어서 데이터 수집
+	- 크롬익스텐션 사용하진 않음 여기서는 지금은 cdp만 사용중
+	- 데이터수집(원본 html) -> 벡터로 순수 html 보냄 -> s3로 자동으로 전송 (고객한테 보여주는 용)
+	- 데이터 컨슘 -> 포멧팅 -> cdp
+ 
+
+
+< 프로젝트 파악 >
+/api/profile-copy
+: s3에 있는 브라우저 프로필 ZIP 파일을 다운로드 -> 로컬에 압축해제
+
+AgentApplication.kt
+1. 브라우저 띄우기
+2. 큐에서 테스크 정보 컨슘 후 메모리에 큐 info 저장
+
+스케쥴러
+deleteOldTaskContexts() -> 1분마다
+    - 한시간 이상된 테스크 메모리 삭제
+activate() -> 1분마다
+    - Google Chrome 창을 찾아서 활성화(포커스)
+healthCheck() -> 1분마다
+consumeScheduled() -> 5분마다
+    - 큐에서 테스크 정보 컨슘 후 메모리에 저장
+sendResult() -> 1분마다
+    - 저장된 TaskQueueActionResultMemory 정제 후 벡터로 전송
+
+
+
+
+

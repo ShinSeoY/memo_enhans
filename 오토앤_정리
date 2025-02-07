@@ -1,0 +1,144 @@
+< 로그인 curl >
+ curl 'https://admin-api.e-ncp.com/auth/login' \
+ -H 'sec-ch-ua-platform: "macOS"' \
+ -H 'Referer: https://service.shopby.co.kr/' \
+ -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+ -H 'accessToken;' \
+ -H 'Version: 1.0' \
+ -H 'sec-ch-ua-mobile: ?0' \
+ -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+ -H 'Accept: application/json, text/plain, */*' \
+ -H 'ClientLocation: https://service.shopby.co.kr/login' \
+ -H 'ClientReferer: https://admin-remote.shopby.co.kr/' \
+ -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \
+ --data-raw 'id=ihs111&password=ihs1111%21&adminType=SERVICE'
+
+< 리스트 curl by (page, searchStartDate, searchEndDate, accesstoken) >
+ curl 'https://admin-api.e-ncp.com/products/approval-waiting?page=1&size=200&searchEndDate=2025-01-15&keywordType=MALL_PRODUCT_NO&periodType=LAST_UPDATE_DATE&searchStartDate=2025-01-15&serviceType=PREMIUM&applyStatus=APPROVAL_READY&keywords=' \
+ -H 'accept: application/json, text/plain, */*' \
+ -H 'accept-language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7' \
+ -H 'accesstoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJubyI6MTk2NTI3LCJyb2xlIjoiTk9STUFMIiwiaXNzIjoiTkhOIENvbW1lcmNlIFBsYXRmb3JtIiwicHJpdmFjeSI6ZmFsc2UsInR5cGUiOiJTRVJWSUNFIiwiaXNNYXN0ZXJBZG1pbiI6ZmFsc2UsIm1hbGxOb3MiOls4MDA0N10sInBhcnRuZXJObyI6MTAwMDA3NTEsIm5obiI6ZmFsc2UsIm5hbWUiOiLqsoDsiJjsmqkiLCJzZXJ2aWNlTm8iOjc4NDg1LCJpZCI6ImloczExMSIsImF1dGhOb3MiOls2Mzc4Ml0sImV4cCI6MTczNzcwMjQ5NCwicGxhbiI6IlBSRU1JVU0iLCJpYXQiOjE3Mzc3MDA2OTR9.7m8Ew_Lp8_VdVhjPIDa7ejDB09ouYM_PHi41JF2ihIc' \
+ -H 'clientlocation: https://admin-remote.shopby.co.kr/product/management/screening-list' \
+ -H 'origin: https://admin-remote.shopby.co.kr' \
+ -H 'priority: u=1, i' \
+ -H 'Version: 1.0' \
+ -H 'referer: https://admin-remote.shopby.co.kr/' \
+ -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+ -H 'sec-ch-ua-mobile: ?0' \
+ -H 'sec-ch-ua-platform: "macOS"' \
+ -H 'sec-fetch-dest: empty' \
+ -H 'sec-fetch-mode: cors' \
+ -H 'sec-fetch-site: cross-site' \
+ -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+
+< 상세 curl by (mallProductNo, accesstoken) >
+ curl 'https://admin-api.e-ncp.com/inspections/124359515/view' \
+ -H 'accept: application/json, text/plain, */*' \
+ -H 'accept-language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7' \
+ -H 'accesstoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJubyI6MTk2NTI3LCJyb2xlIjoiTk9STUFMIiwiaXNzIjoiTkhOIENvbW1lcmNlIFBsYXRmb3JtIiwicHJpdmFjeSI6ZmFsc2UsInR5cGUiOiJTRVJWSUNFIiwiaXNNYXN0ZXJBZG1pbiI6ZmFsc2UsIm1hbGxOb3MiOls4MDA0N10sInBhcnRuZXJObyI6MTAwMDA3NTEsIm5obiI6ZmFsc2UsIm5hbWUiOiLqsoDsiJjsmqkiLCJzZXJ2aWNlTm8iOjc4NDg1LCJpZCI6ImloczExMSIsImF1dGhOb3MiOls2Mzc4Ml0sImV4cCI6MTczODgyNTc0NSwicGxhbiI6IlBSRU1JVU0iLCJpYXQiOjE3Mzg4MjM5NDV9.gl1BPctUM2GnFTDe7fMGAypiBtA8KJ7_HnBWM9E7bms' \
+ -H 'clientlocation: https://admin-remote.shopby.co.kr/popup/product-screening' \
+ -H 'origin: https://admin-remote.shopby.co.kr' \
+ -H 'priority: u=1, i' \
+ -H 'Version: 1.0' \
+ -H 'referer: https://admin-remote.shopby.co.kr/' \
+ -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+ -H 'sec-ch-ua-mobile: ?0' \
+ -H 'sec-ch-ua-platform: "macOS"' \
+ -H 'sec-fetch-dest: empty' \
+ -H 'sec-fetch-mode: cors' \
+ -H 'sec-fetch-site: cross-site' \
+ -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+
+< 판매중인 데이터 list 조회 >
+curl 'https://admin-api.e-ncp.com/products/search' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7' \
+  -H 'accesstoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJubyI6MTk2NTI3LCJyb2xlIjoiTk9STUFMIiwiaXNzIjoiTkhOIENvbW1lcmNlIFBsYXRmb3JtIiwicHJpdmFjeSI6ZmFsc2UsInR5cGUiOiJTRVJWSUNFIiwiaXNNYXN0ZXJBZG1pbiI6ZmFsc2UsIm1hbGxOb3MiOls4MDA0N10sInBhcnRuZXJObyI6MTAwMDA3NTEsIm5obiI6ZmFsc2UsIm5hbWUiOiLqsoDsiJjsmqkiLCJzZXJ2aWNlTm8iOjc4NDg1LCJpZCI6ImloczExMSIsImF1dGhOb3MiOls2Mzc4Ml0sImV4cCI6MTczODY0MTM0NCwicGxhbiI6IlBSRU1JVU0iLCJpYXQiOjE3Mzg2Mzk1NDR9.Vh5R-EePQPQddnTjQmOzPCrewkKsuWfsos9ugP5akGU' \
+  -H 'clientlocation: https://admin-remote.shopby.co.kr/product/management/list' \
+  -H 'content-type: application/json' \
+  -H 'origin: https://admin-remote.shopby.co.kr' \
+  -H 'priority: u=1, i' \
+  -H 'Version: 1.0' \
+  -H 'referer: https://admin-remote.shopby.co.kr/' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \
+  --data-raw '{"adminNo":null,"allowsFrontDisplay":"ALL","allowsPromotion":"ALL","allowsShippingTogether":"ALL","applyStatusType":"ALL","brandNo":null,"canApplyAdditionalDiscount":"ALL","canApplyCoupon":"ALL","categoryCondition":{"type":"DISPLAY","depth":null,"no":null,"nos":[]},"customPropertyValueNos":[],"deliverable":"ALL","deliveryFeeType":"ALL","exceptedMallProductNos":[],"excludeSalesEndProduct":false,"hasAdditionalDiscount":"ALL","mallNos":[],"marketingChannels":[],"memberGradeNo":null,"memberGroupNo":null,"needsAdditionalDiscountInfo":"N","onlyAccessUrl":"ALL","onlyMappingProduct":"ALL","onlyParentProduct":"ALL","page":1,"partnerNo":null,"platformType":"ALL","remainsSaleDays":0,"saleMethodType":"ALL","shippingAreaType":"ALL","size":200,"sort":null,"marketingDisplayYn":"ALL","_partnerOption":"ALL","_selectedProducts":[],"_queryKey":"KB4FEGO1nREKpkPLpk","commission":{"type":"ALL","range":{"min":0,"max":100}},"keywordInfo":{"type":"PRODUCT_NAME","keywords":[]},"periodInfo":{"type":"REGISTER_DATE","period":{"startYmdt":"2025-02-03 00:00:00","endYmdt":"2025-02-03 23:59:59"}},"saleStatus":{"isAll":false,"types":["ON_SALE"]},"saleSettingStatus":{"isAll":true,"types":[]},"stockRange":{"type":"ALL","stockCnt":null,"minStockCnt":null,"maxStockCnt":null}}'
+
+curl 'https://admin-api.e-ncp.com/products/approval-waiting?page=1&size=200&searchEndDate=2025-02-05&keywordType=MALL_PRODUCT_NO&periodType=LAST_UPDATE_DATE&searchStartDate=2024-01-14&applyStatus=APPROVAL_READY&keywords=124833638' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7' \
+  -H 'accesstoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJubyI6MTk2NTI3LCJyb2xlIjoiTk9STUFMIiwiaXNzIjoiTkhOIENvbW1lcmNlIFBsYXRmb3JtIiwicHJpdmFjeSI6ZmFsc2UsInR5cGUiOiJTRVJWSUNFIiwiaXNNYXN0ZXJBZG1pbiI6ZmFsc2UsIm1hbGxOb3MiOls4MDA0N10sInBhcnRuZXJObyI6MTAwMDA3NTEsIm5obiI6ZmFsc2UsIm5hbWUiOiLqsoDsiJjsmqkiLCJzZXJ2aWNlTm8iOjc4NDg1LCJpZCI6ImloczExMSIsImF1dGhOb3MiOls2Mzc4Ml0sImV4cCI6MTczODc0MDQ2NywicGxhbiI6IlBSRU1JVU0iLCJpYXQiOjE3Mzg3Mzg2Njd9.oekV_uQd9RQrMzJQV-JkARgsswG26YzBAzhivYdBN-Y' \
+  -H 'clientlocation: https://admin-remote.shopby.co.kr/product/management/screening-list' \
+  -H 'origin: https://admin-remote.shopby.co.kr' \
+  -H 'priority: u=1, i' \
+  -H 'Version: 1.0' \
+  -H 'referer: https://admin-remote.shopby.co.kr/' \
+  -H 'sec-ch-ua: "Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+
+
+
+< 테이블 정보 >
+CREATE TABLE auton_poc_v1 (
+    mall_name TEXT, -- "쇼핑몰"
+    brand_name1 TEXT, -- "list의 브랜드"
+    brand_name2 TEXT, -- 상세의 브랜드
+    mall_product_no TEXT NOT NULL, -- "상품번호"
+    product_name TEXT, -- "상품명"
+    category_name TEXT, -- "표준카테고리"
+    display_category_names TEXT, -- "전시카테고리"
+    minor_purchase_yn TEXT, -- "성인인증" (y: 사용 안함)
+    payment_means_control_yn TEXT, -- 결제수단설정 (n: 전체가능)
+    keywords TEXT, -- 검색어
+    commission_info TEXT, -- 판매수수료
+    sale_price TEXT, -- 판매가
+    option_sale_price TEXT, -- 옵션판매가 (sale_price - immediateDiscountInfoAmount + firstOptionAddPrice)
+    duty_content_category_no TEXT, -- 상품정보제공고시 (숫자있음: 사용함 / 숫자없음: 사용안함)
+    duty_content_category_name TEXT, -- 상품군
+    duty_contents_content_product_name TEXT, -- 상품정보고시
+    duty_contents_content_producer TEXT, -- 제조자
+    value_added_tax_type TEXT, -- 부가세
+    refundable_yn TEXT, -- 주문환불 (y: 환불가능)
+    mall_product_first_image_url TEXT, -- 상품이미지
+    content TEXT, -- 상품_상세
+    shipping_area_type TEXT, -- 배송구분
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (mall_product_no(255))
+);
+
+< api 호출 파라미터 >
+{
+    "id":"ihs111",
+    "password":"ihs1111!",
+    "startYmdt":1736953200000, //2025-01-16 00:00:00 KST
+    "endYmdt": 1737039599000 //2025-01-16 23:59:59 KST
+}
+
+< 참고 >
+- 1초에 한번씩 api 콜 => api 걸리는 시간 : 호출건수 + a 초가 걸림
+- 값 이 없으면 null이 아니라 하이픈("-") 으로 들어감
+- mall_product_first_image_url, content 는 값이 없을 때 ("-")
+- 값이 Null 인 데이터들은 이미 승인대기 상태가 풀려서 수집이 안된 것
+
+
+
+CREATE TABLE auton_poc_active (
+    mall_product_no TEXT NOT NULL, -- "상품번호"
+    brand_name TEXT, -- 브랜드
+    product_name TEXT, -- "상품명"
+    sale_price TEXT,
+    mall_product_first_image_url TEXT, -- 상품이미지
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (mall_product_no(255))
+);
+

@@ -1,0 +1,66 @@
+
+레드쉬프트 안에 어제 커밋한 내용 반영됐는지 확인
+agent랑 agent-processor 실행시켜서 돌아가는 동작 확인
+
+
+
+https://kwangdong.kurve.co.kr/monitors
+
+
+힙사이즈가 작아서 Rds로 데이터 못넘김
+aws 배치
+시간 체크 & 사이즈 얼마나 먹는지 확인. 1.5배나 2배정도 aws 스펙 올리기
+배치(kurve-product-classification-batch)돌릴때
+우선 로컬에서 배치 수행 -> aws 레드시프트 보고 Cpu 상태 체크 문제 없으면 스펙사이즈 올리기 
+데이터 수집 -> 레드에 전송 -> 레드에 있는거 중 특정 기간에 있는 데이터 가져옴 -> 
+Ex 웅진 하늘보리 로 데이터 수집 막 꺼내온 데이터는 몇리터인지 구분이 안감 
+배치로 데이터 다 가져온후 각 몇미리인지 묶어서(전처리) 후 정제된 데이터 rds에 넣음 
+이때 배치로 데이터 다 가져올때 오류 발생
+
+
+public.shopsearch_detail_sink
+public.shopsearch_option_sink
+
+kurve-price-managment-server-application/application/product-classifier-batch/
+
+
+
+
+
+- 우선 디테이블 테이블에서 몇개 이상되면 뻑나는지 확인
+
+-Xmx20000m로 바꾸고 스왑메모리 설정 하기
+
+-시간은 그냥 그대로 4시간씩?? ㅇㅇ
+
+-쿼리 바꾸기
+- detail 테이블에서만 20만건 가져오고 그리고 가져온거에서 1000개정도 나눠서 option 값 가져오는걸로
+- 쿼리를 조인하지 말고 디테일 테이블에서만 우선 데이터 가져오고 그 이후에 디테일 수로 돌려서 옵션테이블 값을 1000개씩 쪼개서 가져오는걸로
+
+
+kurve-product-classification-batch
+batch는 지금 16gb 메모리 vCPU 2.0 -> 20gb 4코어로 변경함
+
+
+< 새작업 호출방법 > 
+aws batch > 작업정의 > 찾고자하는 batch 명 검색 > 가장 최신 개정 클릭 > 작업 > 새 작업 제출 > 이름은 작업명이랑 동일하게 > 작업 대기열은 hyperoutomation batch queue > 다음 다음 제출
+
+
+힙사이즈가 작아서 Rds로 데이터 못넘김
+aws 배치
+시간 체크 & 사이즈 얼마나 먹는지 확인. 1.5배나 2배정도 aws 스펙 올리기
+배치(kurve-product-classification-batch)돌릴때
+우선 로컬에서 배치 수행 -> aws 레드시프트 보고 Cpu 상태 체크 문제 없으면 스펙사이즈 올리기 
+데이터 수집 -> 레드에 전송 -> 레드에 있는거 중 특정 기간에 있는 데이터 가져옴 -> 
+Ex 웅진 하늘보리 로 데이터 수집 막 꺼내온 데이터는 몇리터인지 구분이 안감 
+배치로 데이터 다 가져온후 각 몇미리인지 묶어서(전처리) 후 정제된 데이터 rds에 넣음 
+이때 배치로 데이터 다 가져올때 오류 발생
+
+
+public.shopsearch_detail_sink
+public.shopsearch_option_sink
+
+kurve-price-managment-server-application/application/product-classifier-batch/
+
+ 
+CloudWatch > 로그 그룹 > kurve-product-classification-batch > kurve-product-classification-batch/default/d6daeaf6f2f7428384d6a4e6d2475173 

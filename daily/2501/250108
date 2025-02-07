@@ -1,0 +1,47 @@
+- chunck로 쪼개서 성공
+25/01/08 00-04 17891266 (천칠백만) 건 처리(16:07 - 16:22 총 15분 소요)
+25/01/08 05-08 10983991 건 처리 (16:32 - 16:41 총 )
+25/01/08 09-12 9093818
+25/01/08 13-16 15234
+
+- 쪼개기 전엔 2백만건까진 성공 7백만건 이상부터 oom
+WHERE p.regdate >= '2025010805'
+  AND p.regdate <= '2025010809'
+= > 411601
+=> 758592 (2025-01-08T00:28:31)
+=> 1373479 (2025-01-08T00:37:03)
+=> 2518130 (2025-01-08T00:50:10) - 2백만
+
+WHERE p.regdate >= '2025010806’
+  AND p.regdate <= '20250108010’
+7823719 (2025-01-08T01:12:38.098) 여기부터 데이터 oom
+
+2025010808 이때 데이터 갯수 -> 10983991(천만건 이상)
+
+만약 Regdate가 04시-08시 이렇게 된다고 하면 30303086(3천만건) 가까이 나올 수 있음
+
+
+-------------------------DONE-----------------------------------------------------------
+- run configuration 에 vm option 에 -Xms512m -Xmx20000m 값 추가해서 메모리 늘린 채로 실행하도록 조정 
+- 조인 안하고 각자 조회하는식으로 코드 변경 & 1000000 씩 chunk로 쪼개서 처리하도록 수정
+
+
+
+-------------------------TODO-----------------------------------------------------------
+- 25/01/08 날짜에 5시에 수집된 데이터가 있으면 안되는데 있었음 확인 필요 
+    - kurve 페이지에서 이상한 데이터(8일의 13시, 17시)의 네트워크 탭에서 response에 "platformOptionId" 가 redshift에 저장된 데이터 찾고 해당 데이터의 regdate 확인  
+- 이전에 수집되지 않은 데이터 채워야 할듯
+
+
+select p.regdate, count(1) 
+from public.shopsearch_detail_sink p
+INNER JOIN public.shopsearch_option_sink AS o
+ON p.uid = o.pid
+where p.regdate like '%20250108%' 
+and o.regdate like '%20250108%' 
+AND p.company = 'woongjin'
+AND p.title IS NOT null AND o.optionname IS NOT NULL
+group by p.regdate
+order by p.regdate desc
+;
+=> 쿼리 결과 (Redshift에는 17시 데이터 없는데 어떻게 들어간건지 확인필요)

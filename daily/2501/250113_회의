@@ -1,0 +1,29 @@
+
+
+언팩 : 신제품 출시
+
+eSIS(샵인샵)이 있는 애들만 
+
+contentsocre/WalmartCaptureCaptureAction class 참고 
+unpack 패키지 안에 구현
+
+defaultcaptuurecaptureaction
+test 코드 안에서 결과 찍히는지 확인
+unpackSearchResult class 가 쭉 나오면 됨
+
+우선 수집한 후에 contain으로 데이터 뽑아와야함
+뎁스가 많이 들어가야할 수도 있음 
+keyword가 list로 들어올수도 있음 
+
+검색했을 때 나오는 첫번째 페이지만 가져옴? 
+팝업이나 쿠키accept 같은거 뜨면 다 무시하도록 설정?
+라자다 는 로봇체크도 함
+
+
+
+------------------------------------------------------------
+
+
+
+
+

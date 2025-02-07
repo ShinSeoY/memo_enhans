@@ -1,0 +1,25 @@
+
+
+키워드 검색만 하도록 수정
+상품 리스트중에 최상단에 있는게 s25를 포함하면 그것만 수집되도록 
+키워드가 최상단에 없으면 수집 안함
+
+ScraperUtils 
+- removeCookiePopup 호출 해서 쿠키나 팝업 삭제하면 됨 
+    여기 없는 애들은 아래 태그 추가해서 해당 함수 사용하면 됨
+
+assertValidatiePage는 안해도 됨 
+
+아마존은 캡챠들때 5번 정도 똑같이 호출 함 
+
+class 이름 : 국가명+플랫폼이름 (country + retailer + searchAction)
+
+url의 렌더 주소가 의미있지 않음 
+-> 검색어가 입력된 주소를 넣음
+-> profile도 크게 상관없음 
+
+action() 메소드 안에 
+page.nativage("tasktItem.url")
+한 후 아래 로직 추가 
+keyword : Galaxy S25 (대소문자 무시, 띄어쓰기 신경쓰기)
+location은 무조건 "keyword" (조건문 뺴도 됨)

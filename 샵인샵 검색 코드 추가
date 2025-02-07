@@ -1,0 +1,100 @@
+package com.collectify.samsungpilot.v2.action.unpack
+
+import com.collectify.browser.BrowserCaptureAction
+import com.collectify.browser.actionmanager.TaskItem
+import com.collectify.samsungpilot.worker.ScraperUtils.removeCookiePopup
+import com.google.gson.JsonObject
+import com.microsoft.playwright.Page
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
+import org.slf4j.LoggerFactory
+
+class GermanyTelekomSearchEsisAndKeywordAction : BrowserCaptureAction<UnpackSearchResult> {
+    private val logger = LoggerFactory.getLogger(this::class.java)
+
+    private val keyword = "Galaxy S24"
+    private val searchUrl = "https://www.telekom.de/start#suche?galaxy%20s24"
+    private val xpathList = arrayListOf("//html/body/div[2]/div", "//html/body/div[2]/div")
+
+    override fun actionName(): String {
+        return "search_esis_and_keyword"
+    }
+
+    override fun platform(): String {
+        return "telekom_de"
+    }
+
+    override fun assertValidatePage(page: Page) {
+    }
+
+    override fun action(
+        page: Page,
+        taskItem: TaskItem,
+    ): UnpackSearchResult {
+        return runBlocking {
+            val esisUrl = taskItem.url
+
+            page.navigate(esisUrl)
+            removeCookiePopup(page)
+            delay(3000)
+
+            // esis 검색
+            val esisResult =
+                xpathList.firstNotNullOfOrNull { xpath -> searchReturnUrl(page, xpath) }
+                    ?.let { url ->
+                        UnpackSearchResult(
+                            items =
+                                listOf(
+                                    UnpackSearchItem(
+                                        platform = platform(),
+                                        keyword = keyword,
+                                        url = url,
+                                        location = "esis",
+                                    ),
+                                ),
+                        )
+                    }
+
+            // 키워드 검색
+            if (esisResult == null) {
+                page.navigate(searchUrl)
+                removeCookiePopup(page)
+                delay(3000)
+
+                val keywordSelector =
+                    "div.nexus-pk-coin__results-wrapper div.nexus-pk-coin__result-list-body " +
+                        "div.nexus-pk-coin__result-item a.nexus-pk-coin__result-item-wrapper"
+
+                searchReturnUrl(page, keywordSelector)?.let {
+                    return@runBlocking UnpackSearchResult(
+                        items =
+                            listOf(
+                                UnpackSearchItem(
+                                    platform = platform(),
+                                    keyword = keyword,
+                                    url = it,
+                                    location = "keyword",
+                                ),
+                            ),
+                    )
+                }
+            }
+            esisResult ?: UnpackSearchResult(items = emptyList())
+        }
+    }
+
+    private fun searchReturnUrl(
+        page: Page,
+        selector: String,
+    ): String? =
+        page.querySelector(selector)
+            ?.let { element ->
+                element.getAttribute("href")?.takeIf {
+                    element.textContent().contains(keyword, ignoreCase = true)
+                }
+            }
+
+    override fun getCDPMessages(taskItem: TaskItem): Map<String, JsonObject>? {
+        return null
+    }
+}

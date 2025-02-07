@@ -1,0 +1,69 @@
+Mysql insert시킬때 역슬래시 같은거 체크 v
+Filepath에 들어갈 데이터 값 이상한거 체크 v
+Docker 만들기
+s3테스트 v
+Redshift 테스트 v
+Master에서 브랜치 파서 푸시
+
+
+...Removing 이 스케쥴돌 때 왜 두번 체크되는지 확인
+secheduler가 처음 테이블에 넣을때 안들어갈때 있음
+
+Playwright, Puppeteer 파악
+
+
+
+
+/Users/seoyoungshin/external-write-api 
+/Users/seoyoungshin/external-write-consumer 
+: 인텔리제이 show history로 가져온 폴더들
+
+/Users/seoyoungshin/enhans/collectify-server-application
+: 12/30일 기준 폴더들
+
+/Users/seoyoungshin/enhans/project/collectify-server-application_old
+: 깃 꼬인 프로젝트
+
+/Users/seoyoungshin/enhans/project/collectify-server-application
+: 새로 클론받고 새로 만든 프로젝트 다시 넣은 프로젝트
+: 새로운 master 변경사항도 반영됨 -> sqs관련 오류 발생(다이나믹 db accesskey 가 없어서 발생하는 오류로 보임)
+
+
+—————————도커 실행 명령어———————————————
+cd /collectify-server-application
+
+./gradlew :application:external-write-api:clean
+./gradlew :application:external-write-consumer:clean
+./gradlew :application:external-write-api:build -x ktlintMainSourceSetCheck
+./gradlew :application:external-write-consumer:build -x ktlintMainSourceSetCheck
+
+cd /application
+docker-compose -f docker-compose-seoyoung.yml up -d 
+
+docker exec -it b9394344ac39 mysql -uroot -pshsy1123
+create table if not exists TEST.member
+(
+    id         varchar(50)  null,
+    email      varchar(100) null,
+    name       varchar(100) null,
+    phone      varchar(100) null,
+    created_at varchar(100) null
+);
+
+create table if not exists TEST.product
+(
+    id         varchar(50)  null,
+    price      int          null,
+    created_at varchar(100) null,
+    name       varchar(100) null
+);
+
+
+
+------------------------------------------------------------------------------------------
+< CHECK >
+external-wirte 브랜치 팠음(가장 최근 마스터에서 생성됨)
+dockerfile까지 작성 완료(빌드 명령어는 없음)
+docker-compose 파일 만들어서 테스트해봄(근데 한번더 확인해야함 분명 됐었는데 mysql 연결이 다시 안됨 ㅜ)
+로컬디비에 들어갈땐 한글, 시간 설정 다 됐는데 도커 디비로 테스트시 한글이 ??로 들어가고 시간은 utc 로 되어있음
+새로운 master 변경사항 반영으로 생신 sqs관련 오류 체크필요

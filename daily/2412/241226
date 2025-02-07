@@ -1,0 +1,51 @@
+
+
+S3TSVToRedshiftWriter
+- add() 
+    - 1. filePath (runContext+테이블명) -> filePathMap에 add
+    - 2. buffer에 아이템 담기
+    - 3. Buffer 크기가 flushThreshold 보다 작을떄까지 
+    - 4. Buffer 크기가 flushThreshold 보다 크면 디비에 flush
+- flush()
+    - 1. 버퍼 비우기
+    - 2. flushPreAction()
+    - 3. 존재하는 파일이 있다면 삭제
+    - 4. 버퍼링을 사용하여 로컬 filePath에 tsv형식의 파일쓰기(탭으로 구분된 문자열)
+    - 4ex) Person(1, "John Doe", 30) => 1\tJohn Doe\t30
+    - 5. 로컬에 올린 filePath의 파일을 s3에 업로드 -> url 리턴
+    - 6. 리턴받은 url 로 s3에서 redshift로 데이터 COPY
+
+SQSConsumer
+- consume()
+    - runBlocking : 현재 스레드를 차단하여 내부 코루틴이 완료될 때까지 wait
+    - coroutineScope : 내부 코루틴들이 완료될 때까지 wait
+    - Repeat(5) { GlobalScope.launch : 5개의 새로운 코루틴 생성, coroutineScope와는 독립적으로 실행
+
+
+
+일단 큐에서 데이터를 받아옴
+받아온 큐 데이터와 productConsumerProcessor 비교 후 queueDataInfoIt.value?.type 에 따라 Write 메소드 호출
+
+
+
+궁금한거
+- SQSConsumer에서 repeat은 왜 5번이나 하지? 실패할때는 대비해서 여러번 하는건가 -> sqs에서 한번만 받아오는건 비효율적이라 
+- 버킷명 enhans-collectify-chrome-extention-prod 이거 써도 되는건지
+- flushToDatabase 에서 CREDENTIALS에 awskey 값 변경해야하나?
+
+
+------------------------------------------------------------------------------------------
+
+< done >
+- redshift-consumer 프로젝트 코드 분석
+- external-write-consumer 에 맞게 수정 완료
+    - external-write-api에서 sender한 데이터를 받음
+    - externalWriteConsumerProcessor.write 직전까지 확인 완료
+
+
+< todo >
+- s3업로드나 파일 패스 같은거 테스트 가능한지 여쭤보기
+    - 버킷명 enhans-collectify-chrome-extention-prod 이거 써도 되는건지
+    - flushToDatabase 에서 CREDENTIALS에 awskey 값 변경해야하나?
+- 기존 redshift-consumer 코드랑 비교해보기(리펙토링)
+- ExternalWriteConsumerProcessor.flush() 함수가 왜 특정 디비가 아닌 전체 디비를 flush하는지 생각필요

@@ -1,0 +1,75 @@
+- 1/23 삼성 원팩데이
+
+- 현재 스펙 : 16코어 32기가 스왑2배 코롬 10개 돌림
+
+- 문제 1. cdp로 작업하니 문제 발생 - 메인브라우저 크롬이 리소스 잡아먹음 
+    방법 1. 메인브라우저를 어느정도 차면 자동으로 죽이는 형식 테스트 필요 
+        BrowserMonitor.kt -> mornitorig()안에 죽으면 다시 살리는 작업 필요(cdp protocol 참고)
+        죽였을때 내부 큐에 담아놓기 살리면 알아서 큐에 남아 있는거 처리됨
+    방법 2. cdp 하나랑 퍼페티어 하나랑 한세트로 묶어서 처리 후 종료한후 넘기는 방식으로
+
+- 문제 2 클라우드 플레어(봇인지 인지하는거같은거) 안뜨게해야함
+    방법 1. 일단 띄우고(명령어로) cdp를 띄우는 식으로 
+        브라우저 하나당 페이지(탭) 하나로 묶는게 좋음
+
+- agent 재시작시 agent-processor도 같이 재시작 필요
+
+< /agent >
+- 디폴트로 꼭 띄움 
+- at, 웅진, 삼성 .. 별로 환경(yml)이 다름
+- application.proeprties안에 profile로 엔트리포인트 잡기 -> 해당 환경의 properties랑 yml이 세트로 자동 참조됨
+- 도커로 못띄움 jar에 환경변수 넣어서 작업 필요
+
+- gologin
+    : 크로미움을 커스텀하여 자기만의 브라우저 만듬 
+    : 크롬으로 바꿀수 없는걸 쉽게 바꿔줌 
+    : 얘도 브라우저 띄우고 컨트롤함 이거 참고하기
+
+- processManager.runall() 
+    : 브라우저 띄누는 부분 createBuilder() 
+    : chromeInspectClient 
+        : 크롬 정보가져와서 그 정보를 기반으로 api call
+
+- 어플실행 -> 여러개 크롬 뜸 -> (url창에 chrome://version(브라우저 정보 확인가능)) -> url창에 localhost:9223/json/version 검색 -> wevSockerDebuggerUrl 값으로 커넥션 맺어 연결
+
+- rebrowser사용하더라도 문제 있슴
+
+- 삼성꺼는 봇인지 인식 못하게 되어있음(cdp 붙어있있는데도 가능)
+    : listof(mediamarkt_de).contain..... 덕분에 
+
+
+< /agent-processor >
+- agent에 있는 api 콜해서 커넥션함
+
+
+
+</internal/browser>
+
+
+
+internal/browser : 크롬 커넥션 맺는 부분
+- /processor/BrowserLauncher : 커멘드명령어로 브라우저를 띄움 파라미터를 넘겨서 
+
+internal/checkpointer 
+: dynamodb와 연결됨
+: 이미 디비에 기록이 되어있는 데이터는 관리 하지 않기 위해 사용 
+
+internal/kafka
+: 삼성에서 데이터 수집할때
+: avro 아브로..? 패키지명 안맞는 이슈가 있음 그래서 임의로 gson변경 해놓음
+
+
+
+
+
+
+
+---------------- 1월 TODO --------------------
+
+1. agent 메모리 릭 해결
+2. 킄ㄹ라우드 플레어 뚫을라면 리얼 브라우저 써야하는데 랜딩 포인트 주고 랜딩이 된후 퍼페티어 붙어서 데이ㅓ 가져오는 작업으로 변경 필요
+    : 브라우저 프로세스랑 플라잉? 하나로 묶어 작업 필요
+    : 관련 aws 인스턴스 -> agent-001, agent-002, agent-003 
+    : microsoft remote desktop 셋팅 필요 (인스턴스 agent-001, 002, 003 에 접근 가능)
+3. 디비 나눠야함
+4. 삼성에서 요청이 오면 카프카로 연결할수있도록

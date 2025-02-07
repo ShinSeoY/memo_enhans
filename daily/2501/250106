@@ -1,0 +1,14 @@
+쿠팡사이트 단품주소 넘겨받고
+
+data-parser/../parser/product/CoupangProductDetailHtmlParser.kt 안에
+아래 부분 수정
+
+ReturnInfo(
+    address = "",
+    deliveryCompany = "",
+),
+
+테스트코드 만들기 
+
+
+

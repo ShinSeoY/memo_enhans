@@ -1,0 +1,16 @@
+< 배포방법 >
+머지 ->  code탭 -> 오른쪽에 Releases 
+-> [Draft a new release] 버튼 클릭
+-> [choose a tag] 태그 생성 draft(tag명 각 배포하고자하는 어플리케이션명 에다가 버전 1씩 올리기)
+-> [generate relaese notes] 버튼 클릭해서 write 에 값 자동으로 채우기 
+-> actions 탭에 초록색 동그라미 확인 
+
+
+< 새작업 호출방법 > 
+aws batch > 작업정의 > 찾고자하는 batch 명 검색 > 가장 최신 개정 클릭 > 작업 > 새 작업 제출 > 이름은 작업명이랑 동일하게 > 작업 대기열은 hyperoutomation batch queue > 다음 다음 제출
+
+< 새로운 작업정의 설정 방법 >
+CloudWatch 에 규칙에 들어가서 kurve-product ... 찾고 > 대상 > 편집
+
+
+새로만든 queue name : collectify-external-data-queue-prod

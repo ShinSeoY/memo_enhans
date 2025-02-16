@@ -1,0 +1,27 @@
+- 내가 했던 데이터 수집 방법
+    -> api call (auton) & curl
+
+- oom 해결할때 시도했던 방법
+    run configuration 에 vm option 에 -Xms512m -Xmx20000m 값 추가해서 메모리 늘린 채로 실행하도록 조정 
+
+
+- sqs 메세지 전송시 사이즈가 너무 커서 오류발생 sqs 전송 용량 제한 오류
+    -> java.util.concurrent.CompletionException: software.amazon.awssdk.services.sqs.model.SqsException: One or more parameters are invalid. Reason: Message must be shorter than 262144 bytes.
+    -> 청크 사용
+
+- 데이터 수집시 api call 사용
+    -> 하나의 api call 이 실패했다고 다른 api 콜이 실패하면 안됨 
+    -> retry 는 어떻게 할지 
+    -> 벌크인서트시 ignore 사용 
+
+
+< 지금까지 했던 일 >
+- external-write-api
+- external-wirte-consume
+- kurve-price-managment-server-application
+    - 스케줄러가 돌면서 데이터를 가져올 때 오류 발생 -> 너무 많은 데이터 수집으로 인한 OOM error
+    - qeury 문 수정 (distinct) 
+- 다이나모디비 성능 파악
+- 삼성언팩시 키워드 파악
+- 프록시 다른 업체 검색 중(250117)
+- auton 데이터 수집 및 poc api 작성

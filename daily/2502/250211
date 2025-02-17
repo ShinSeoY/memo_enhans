@@ -1,0 +1,18 @@
+
+그라파나 : i-0f72e0d4f11938c2c
+ssh -i /Users/seoyoungshin/Documents/ai-system-monitoring.pem ubuntu@ec2-15-164-245-7.ap-northeast-2.compute.amazonaws.com
+
+프로메테우스 : i-0961f6e9b0490d0c6
+ssh -i /Users/seoyoungshin/Documents/ai-system-monitoring.pem ubuntu@ec2-3-34-123-121.ap-northeast-2.compute.amazonaws.com
+
+로키 : i-052737185ba056fb4
+ssh -i /Users/seoyoungshin/Documents/ai-system-monitoring.pem root@ec2-54-180-143-252.ap-northeast-2.compute.amazonaws.com
+
+
+
+
+-------------------------DONE-----------------------------------------------------------
+
+
+-------------------------TODO-----------------------------------------------------------
+

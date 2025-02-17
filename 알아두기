@@ -14,3 +14,23 @@ CloudWatch 에 규칙에 들어가서 kurve-product ... 찾고 > 대상 > 편집
 
 
 새로만든 queue name : collectify-external-data-queue-prod
+
+
+
+<auton server>
+ssh -i /Users/seoyoungshin/Documents/amazon_viralpick_seoul.pem ec2-user@3.38.214.114
+cd auton_qc
+bash stop.sh && bash start.sh 
+: 배포후에 서버 들어가서 한번씩 해줘야함
+
+
+<logger server>
+그라파나 : i-0f72e0d4f11938c2c
+ssh -i /Users/seoyoungshin/Documents/ai-system-monitoring.pem ubuntu@ec2-15-164-245-7.ap-northeast-2.compute.amazonaws.com
+
+프로메테우스 : i-0961f6e9b0490d0c6
+ssh -i /Users/seoyoungshin/Documents/ai-system-monitoring.pem ubuntu@ec2-3-34-123-121.ap-northeast-2.compute.amazonaws.com
+
+로키 : i-052737185ba056fb4
+ssh -i /Users/seoyoungshin/Documents/ai-system-monitoring.pem ubuntu@ec2-54-180-143-252.ap-northeast-2.compute.amazonaws.com
+

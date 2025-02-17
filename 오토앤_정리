@@ -17,7 +17,7 @@
  curl 'https://admin-api.e-ncp.com/products/approval-waiting?page=1&size=200&searchEndDate=2025-01-15&keywordType=MALL_PRODUCT_NO&periodType=LAST_UPDATE_DATE&searchStartDate=2025-01-15&serviceType=PREMIUM&applyStatus=APPROVAL_READY&keywords=' \
  -H 'accept: application/json, text/plain, */*' \
  -H 'accept-language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7' \
- -H 'accesstoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJubyI6MTk2NTI3LCJyb2xlIjoiTk9STUFMIiwiaXNzIjoiTkhOIENvbW1lcmNlIFBsYXRmb3JtIiwicHJpdmFjeSI6ZmFsc2UsInR5cGUiOiJTRVJWSUNFIiwiaXNNYXN0ZXJBZG1pbiI6ZmFsc2UsIm1hbGxOb3MiOls4MDA0N10sInBhcnRuZXJObyI6MTAwMDA3NTEsIm5obiI6ZmFsc2UsIm5hbWUiOiLqsoDsiJjsmqkiLCJzZXJ2aWNlTm8iOjc4NDg1LCJpZCI6ImloczExMSIsImF1dGhOb3MiOls2Mzc4Ml0sImV4cCI6MTczNzcwMjQ5NCwicGxhbiI6IlBSRU1JVU0iLCJpYXQiOjE3Mzc3MDA2OTR9.7m8Ew_Lp8_VdVhjPIDa7ejDB09ouYM_PHi41JF2ihIc' \
+ -H 'accesstoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJubyI6MTk2NTI3LCJyb2xlIjoiTk9STUFMIiwiaXNzIjoiTkhOIENvbW1lcmNlIFBsYXRmb3JtIiwicHJpdmFjeSI6ZmFsc2UsInR5cGUiOiJTRVJWSUNFIiwiaXNNYXN0ZXJBZG1pbiI6ZmFsc2UsIm1hbGxOb3MiOls4MDA0N10sInBhcnRuZXJObyI6MTAwMDA3NTEsIm5obiI6ZmFsc2UsIm5hbWUiOiLqsoDsiJjsmqkiLCJzZXJ2aWNlTm8iOjc4NDg1LCJpZCI6ImloczExMSIsImF1dGhOb3MiOls2Mzc4Ml0sImV4cCI6MTczOTQzNjA3MiwicGxhbiI6IlBSRU1JVU0iLCJpYXQiOjE3Mzk0MzQyNzJ9.cxCj0AUapP1vefHY_qdHNUgPNnrFiuP1ojxLpgBl5Zw' \
  -H 'clientlocation: https://admin-remote.shopby.co.kr/product/management/screening-list' \
  -H 'origin: https://admin-remote.shopby.co.kr' \
  -H 'priority: u=1, i' \
@@ -32,10 +32,10 @@
  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
 
 < 상세 curl by (mallProductNo, accesstoken) >
- curl 'https://admin-api.e-ncp.com/inspections/124359515/view' \
+ curl 'https://admin-api.e-ncp.com/inspections/124385502/view' \
  -H 'accept: application/json, text/plain, */*' \
  -H 'accept-language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7' \
- -H 'accesstoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJubyI6MTk2NTI3LCJyb2xlIjoiTk9STUFMIiwiaXNzIjoiTkhOIENvbW1lcmNlIFBsYXRmb3JtIiwicHJpdmFjeSI6ZmFsc2UsInR5cGUiOiJTRVJWSUNFIiwiaXNNYXN0ZXJBZG1pbiI6ZmFsc2UsIm1hbGxOb3MiOls4MDA0N10sInBhcnRuZXJObyI6MTAwMDA3NTEsIm5obiI6ZmFsc2UsIm5hbWUiOiLqsoDsiJjsmqkiLCJzZXJ2aWNlTm8iOjc4NDg1LCJpZCI6ImloczExMSIsImF1dGhOb3MiOls2Mzc4Ml0sImV4cCI6MTczODgyNTc0NSwicGxhbiI6IlBSRU1JVU0iLCJpYXQiOjE3Mzg4MjM5NDV9.gl1BPctUM2GnFTDe7fMGAypiBtA8KJ7_HnBWM9E7bms' \
+ -H 'accesstoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJubyI6MTk2NTI3LCJyb2xlIjoiTk9STUFMIiwiaXNzIjoiTkhOIENvbW1lcmNlIFBsYXRmb3JtIiwicHJpdmFjeSI6ZmFsc2UsInR5cGUiOiJTRVJWSUNFIiwiaXNNYXN0ZXJBZG1pbiI6ZmFsc2UsIm1hbGxOb3MiOls4MDA0N10sInBhcnRuZXJObyI6MTAwMDA3NTEsIm5obiI6ZmFsc2UsIm5hbWUiOiLqsoDsiJjsmqkiLCJzZXJ2aWNlTm8iOjc4NDg1LCJpZCI6ImloczExMSIsImF1dGhOb3MiOls2Mzc4Ml0sImV4cCI6MTczOTUxNzQyNiwicGxhbiI6IlBSRU1JVU0iLCJpYXQiOjE3Mzk1MTU2MjZ9.q22gbteyuk-t9r81VocWIpNFzKEDOJKeVGwSzUUvNcQ' \
  -H 'clientlocation: https://admin-remote.shopby.co.kr/popup/product-screening' \
  -H 'origin: https://admin-remote.shopby.co.kr' \
  -H 'priority: u=1, i' \
@@ -72,7 +72,7 @@ curl 'https://admin-api.e-ncp.com/products/search' \
 curl 'https://admin-api.e-ncp.com/products/approval-waiting?page=1&size=200&searchEndDate=2025-02-05&keywordType=MALL_PRODUCT_NO&periodType=LAST_UPDATE_DATE&searchStartDate=2024-01-14&applyStatus=APPROVAL_READY&keywords=124833638' \
   -H 'accept: application/json, text/plain, */*' \
   -H 'accept-language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7' \
-  -H 'accesstoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJubyI6MTk2NTI3LCJyb2xlIjoiTk9STUFMIiwiaXNzIjoiTkhOIENvbW1lcmNlIFBsYXRmb3JtIiwicHJpdmFjeSI6ZmFsc2UsInR5cGUiOiJTRVJWSUNFIiwiaXNNYXN0ZXJBZG1pbiI6ZmFsc2UsIm1hbGxOb3MiOls4MDA0N10sInBhcnRuZXJObyI6MTAwMDA3NTEsIm5obiI6ZmFsc2UsIm5hbWUiOiLqsoDsiJjsmqkiLCJzZXJ2aWNlTm8iOjc4NDg1LCJpZCI6ImloczExMSIsImF1dGhOb3MiOls2Mzc4Ml0sImV4cCI6MTczODc0MDQ2NywicGxhbiI6IlBSRU1JVU0iLCJpYXQiOjE3Mzg3Mzg2Njd9.oekV_uQd9RQrMzJQV-JkARgsswG26YzBAzhivYdBN-Y' \
+  -H 'accesstoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJubyI6MTk2NTI3LCJyb2xlIjoiTk9STUFMIiwiaXNzIjoiTkhOIENvbW1lcmNlIFBsYXRmb3JtIiwicHJpdmFjeSI6ZmFsc2UsInR5cGUiOiJTRVJWSUNFIiwiaXNNYXN0ZXJBZG1pbiI6ZmFsc2UsIm1hbGxOb3MiOls4MDA0N10sInBhcnRuZXJObyI6MTAwMDA3NTEsIm5obiI6ZmFsc2UsIm5hbWUiOiLqsoDsiJjsmqkiLCJzZXJ2aWNlTm8iOjc4NDg1LCJpZCI6ImloczExMSIsImF1dGhOb3MiOls2Mzc4Ml0sImV4cCI6MTczOTMyNjI1OSwicGxhbiI6IlBSRU1JVU0iLCJpYXQiOjE3MzkzMjQ0NTl9.DQvqw4xtf8vs6NM0H3NlaNDY_ixgnYUZjJnx9jxVokk' \
   -H 'clientlocation: https://admin-remote.shopby.co.kr/product/management/screening-list' \
   -H 'origin: https://admin-remote.shopby.co.kr' \
   -H 'priority: u=1, i' \
@@ -141,4 +141,44 @@ CREATE TABLE auton_poc_active (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (mall_product_no(255))
 );
+
+
+< 25.02.14 기준 auton_poc_v1 컬럼정의 >
+mall_name : list에 쇼핑몰
+brand_name1 : list에 브랜드명
+brand_name2 : 상세에 있는 브랜드명
+mall_product_no
+product_name : 상품명
+category_name : 표준카테고리
+display_category_names : 전시카테고리
+minor_purchase_yn : 성인인증
+payment_means_control_yn : 결제수단설정
+keywords : 검색어
+commission_info : 판매수수료
+sale_price : 판매가
+option_sale_price : 옵션가 전체 (콤마로 구분)
+duty_content_category_no 상품정보제공고시
+duty_content_category_name : 상품군
+duty_contents_content_product_name : 품명및모델명
+duty_contents_content_producer : 제조자
+value_added_tax_type : 판매 수수료
+refundable_yn : 주문환불
+mall_product_first_image_url : 상품이미지
+content : 상품상세 첫번쨰 사진 (지금은 수집 x)
+last_content : 상품상세 마지막 사진 (지금은 수집 x)
+contents : 상품상세 전체(콤마로 구분된 이미지 url)
+shipping_area_type : 배송구분
+approval_requested_date_time
+register_date_time
+partner_name
+created_at
+updated_at
+status 
+'승인완료' : 승인완료 api
+'승인대기' : df 값 처음 데이터가 수집될때
+'이미처리됨' : 오류발생시, 테이블엔 데이터가 있지만 실제론 수집되지 않는 데이터일경우(수기로 처리된경우)
+'재검토필요' : 우리디비와 실시간오토앤 데이터가 일치하지 않을 경우 auton_poc_v1 업데이트, reason 테이블에 변경된 row만 삭제
+'승인거부' : 승인거부 api
+'임시승인완료' : ????
+'수정후승인대기' : 우리디비와 실시간오토앤 데이터가 일치하지 않을 경우 auton_poc_v1 업데이트, reason 테이블에 변경된 row만 삭제, 만약 auton_poc_v1에 데이터가 없다면 insert
 

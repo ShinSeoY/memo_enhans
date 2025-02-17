@@ -1,0 +1,15 @@
+
+node : npx ts-node src/index.ts
+python : 
+가상환경 활성화 필요
+python3 -m venv path/to/venv    
+source venv/bin/activate
+pip install python-logging-loki
+python3 testlogging.py
+
+-------------------------DONE-----------------------------------------------------------
+
+
+-------------------------TODO-----------------------------------------------------------
+
+- 심사후승인대기 api 돌리기

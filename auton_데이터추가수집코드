@@ -4,7 +4,9 @@
                 val partnerName = getPartnerNameValue(it)
                 val mallProductNo = getPrimaryKeyValue(it)
                 val sql = """
-                    UPDATE auton_poc_v1 set partner_name = '${partnerName}'
+                    UPDATE auton_poc_v1 
+                    set partner_name = '${partnerName}',
+                    updated_at = CURRENT_TIMESTAMP
                     where mall_product_no = ${mallProductNo}
                 """
                 logger.info("Start writing to MySql: $sql")
